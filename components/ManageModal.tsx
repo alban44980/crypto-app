@@ -8,19 +8,19 @@ import {
   Text,
 } from 'react-native';
 
-function AddModal({ addModal, setAddModal }: any) {
+function ManageModal({ manageModal, setManageModal }: any) {
   return (
     <Modal
       animationType="slide"
       transparent={true}
-      visible={addModal}
+      visible={manageModal}
       onRequestClose={() => {}}
     >
       <View style={styles.container}>
-        <Text>HELLO FROM ADD MODAL</Text>
+        <Text>HELLO FROM MANAGE</Text>
         <TouchableOpacity
           onPress={() => {
-            setAddModal(false);
+            setManageModal(false);
           }}
         >
           <Text>BACK BUTTON</Text>
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddModal;
+export default ManageModal;

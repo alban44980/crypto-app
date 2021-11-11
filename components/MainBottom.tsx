@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-function MainBottom() {
+function MainBottom({ setManageModal }: any) {
   return (
     <View style={styles.bottom}>
       <View style={styles.titleContainer}>
@@ -9,7 +9,12 @@ function MainBottom() {
       </View>
       <View style={styles.dataContainer}></View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.manageButton}>
+        <TouchableOpacity
+          style={styles.manageButton}
+          onPress={() => {
+            setManageModal(true);
+          }}
+        >
           <Text style={styles.manageText}>Manage</Text>
         </TouchableOpacity>
       </View>
