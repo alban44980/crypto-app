@@ -20,8 +20,14 @@ function MainTop() {
           <Text>+ Add Funds</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.mainNumbers}></View>
-      <View style={styles.graphContainer}></View>
+      <View style={styles.mainNumbers}>
+        <Text style={styles.capital}>$ 1000</Text>
+        <Text style={styles.interest}>$1.04795293</Text>
+        <Text></Text>
+      </View>
+      <View style={styles.graphContainer}>
+        <Text>GRAPH SECTION</Text>
+      </View>
     </View>
   );
 }
@@ -40,19 +46,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // justifyContent: 'center',
   },
-  mainNumbers: {
-    width: '100%',
-    height: '30%',
-    backgroundColor: 'green',
-  },
   graphContainer: {
     width: '100%',
     height: '45%',
-    backgroundColor: 'red',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   profilePic: {
-    width: 80,
-    height: 80,
+    width: 60,
+    height: 60,
     borderRadius: 50,
     marginLeft: 20,
   },
@@ -65,6 +67,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
+  },
+  mainNumbers: {
+    width: '100%',
+    height: '30%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  capital: {
+    fontSize: 20,
+  },
+  interest: {
+    fontSize: 40,
+    fontWeight: 'bold',
   },
 });
 
