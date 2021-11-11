@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -7,8 +7,9 @@ import {
   Touchable,
   Text,
 } from 'react-native';
+import AddModal from './AddModal';
 
-function MainTop() {
+function MainTop({ setAddModal }: any) {
   return (
     <View style={styles.top}>
       <View style={styles.addContainer}>
@@ -16,7 +17,12 @@ function MainTop() {
           style={styles.profilePic}
           source={require('./../assets/profile_pic.jpeg')}
         />
-        <TouchableOpacity style={styles.addButton}>
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={() => {
+            setAddModal(true);
+          }}
+        >
           <Text>+ Add Funds</Text>
         </TouchableOpacity>
       </View>
