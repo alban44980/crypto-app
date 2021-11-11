@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  Modal,
-  TouchableOpacity,
-  Touchable,
-  Text,
-} from 'react-native';
+import { View, StyleSheet, Modal, TouchableOpacity, Text } from 'react-native';
 
 function ManageModal({ manageModal, setManageModal }: any) {
   return (
