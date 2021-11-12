@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -17,6 +17,7 @@ function ManageModal({
   investRepartition,
   setInvestRepartition,
 }: any) {
+  const [update, setUpdate] = useState({ ...investRepartition });
   return (
     <Modal
       animationType="slide"
@@ -44,30 +45,37 @@ function ManageModal({
             rate={rates.dai}
             color={colors.asset1}
             value={100}
-            investRate={investRepartition.dai}
+            investRate={update.dai}
             setInvestRepartition={setInvestRepartition}
+            update={update}
+            setUpdate={setUpdate}
           />
           <DataItem
             crypto={'USDC'}
             rate={rates.usdc}
             color={colors.asset2}
             value={0}
-            investRate={investRepartition.usdc}
+            investRate={update.usdc}
             setInvestRepartition={setInvestRepartition}
+            update={update}
+            setUpdate={setUpdate}
           />
           <DataItem
             crypto={'USDT'}
             rate={rates.usdt}
             color={colors.asset3}
             value={0}
-            investRate={investRepartition.usdt}
+            investRate={update.usdt}
             setInvestRepartition={setInvestRepartition}
+            update={update}
+            setUpdate={setUpdate}
           />
         </View>
         <View style={styles.confirmContainer}>
           <TouchableOpacity
             style={styles.confirmButton}
             onPress={() => {
+              setInvestRepartition(update);
               setManageModal(false);
             }}
           >

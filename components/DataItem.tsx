@@ -10,6 +10,7 @@ function DataItem({
   rate,
   investRate,
   setInvestRepartition,
+  setUpdate,
 }: any) {
   return (
     <View style={styles.dataItem}>
@@ -52,7 +53,7 @@ function DataItem({
               trackStyle={{ height: 7 }}
               step={5}
               onValueChange={(value: any) => {
-                setInvestRepartition((previous: Investments) => {
+                setUpdate((previous: Investments) => {
                   const asset = crypto.toLowerCase();
                   return {
                     ...previous,
@@ -64,7 +65,7 @@ function DataItem({
                 const total = 100;
                 const diff = total - value;
                 const asset = crypto.toLowerCase();
-                setInvestRepartition((previous: Investments) => {
+                setUpdate((previous: Investments) => {
                   const newState: any = { ...previous };
                   for (let key in newState) {
                     if (key !== asset) {
