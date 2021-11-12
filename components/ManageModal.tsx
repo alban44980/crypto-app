@@ -68,7 +68,7 @@ function ManageModal({
           <TouchableOpacity
             style={styles.confirmButton}
             onPress={() => {
-              // setAddModal(false);
+              setManageModal(false);
             }}
           >
             <Text style={styles.confirmText}>Confirm</Text>
@@ -83,13 +83,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#E6E8FA',
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
   backContainer: {
     height: '7%',
     width: '100%',
-    // backgroundColor: 'red',
   },
   backButton: {
     backgroundColor: '#FFF7EF',
@@ -104,7 +101,6 @@ const styles = StyleSheet.create({
   },
   backText: {},
   titleContainer: {
-    // backgroundColor: 'yellow',
     height: '13%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -120,7 +116,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   confirmContainer: {
-    // backgroundColor: 'red',
     height: '15%',
     justifyContent: 'center',
     alignItems: 'center',

@@ -2,23 +2,32 @@ import React, { useEffect } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import DataItem from './MainBottom/DataItem';
 
-function MainBottom({ setManageModal, rates, investments }: any) {
+function MainBottom({
+  setManageModal,
+  rates,
+  investRepartition,
+  capital,
+}: any) {
   return (
     <View style={styles.bottom}>
       <View style={styles.titleContainer}>
         <Text style={styles.investTitle}>My investments</Text>
       </View>
       <View style={styles.dataContainer}>
-        <DataItem name={'DAI'} rate={rates.dai} investment={investments.dai} />
+        <DataItem
+          name={'DAI'}
+          rate={rates.dai}
+          investment={(investRepartition.dai * capital) / 100}
+        />
         <DataItem
           name={'USDC'}
           rate={rates.usdc}
-          investment={investments.usdc}
+          investment={(investRepartition.usdc * capital) / 100}
         />
         <DataItem
           name={'USDT'}
           rate={rates.usdt}
-          investment={investments.usdt}
+          investment={(investRepartition.usdt * capital) / 100}
         />
       </View>
       <View style={styles.buttonContainer}>

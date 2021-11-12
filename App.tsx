@@ -16,11 +16,11 @@ export default function App() {
     usdc: 0,
     usdt: 0,
   });
-  const [investments, setInvestments] = useState<Investments>({
-    dai: 0,
-    usdc: 0,
-    usdt: 0,
-  });
+  // const [investments, setInvestments] = useState<Investments>({
+  //   dai: 0,
+  //   usdc: 0,
+  //   usdt: 0,
+  // });
   const [investRepartition, setInvestRepartition] = useState<Repartition>({
     dai: 100,
     usdc: 0,
@@ -38,18 +38,14 @@ export default function App() {
         };
         for (let item of data.cToken) {
           if (item.name === 'Compound Dai') {
-            // console.log('RATE FOR COMPOUND DAI ==>>> ', item.supply_rate);
             obj.dai = Number(item.supply_rate.value);
           }
           if (item.name === 'Compound USD Coin') {
-            // console.log('RATE FOR COMPOUND USDC ==>>> ', item.supply_rate);
             obj.usdc = Number(item.supply_rate.value);
           }
           if (item.name === 'Compound USDT') {
-            // console.log('RATE FOR COMPOUND USDT ==>>> ', item.supply_rate);
             obj.usdt = Number(item.supply_rate.value);
           }
-          // console.log(item.name);
         }
         setRates(obj);
       });
@@ -81,7 +77,8 @@ export default function App() {
       <MainBottom
         setManageModal={setManageModal}
         rates={rates}
-        investments={investments}
+        capital={capital}
+        investRepartition={investRepartition}
       />
     </SafeAreaView>
   );
