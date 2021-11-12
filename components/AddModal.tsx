@@ -62,30 +62,15 @@ function AddModal({ addModal, setAddModal, setCapital }: any) {
   );
 }
 
-{
-  /* <TextInput
-  style={styles.searchBar}
-  value={search}
-  placeholder="Where are you going?"
-  placeholderTextColor={colors.backgroundDark}
-  onChangeText={(text) => searchFilter(text, tagsSelected)}
-/>; */
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#E6E8FA',
-    // backgroundColor: Platform.OS === 'android' ? 'aquamarine' : 'red',
-
     alignItems: 'center',
-    // justifyContent: 'center',
-    // backgroundColor: 'purple',
   },
   backContainer: {
     height: '35%',
     width: '100%',
-    // backgroundColor: 'red',
   },
   backButton: {
     backgroundColor: '#FFF7EF',
@@ -100,7 +85,6 @@ const styles = StyleSheet.create({
   },
   backText: {},
   inputContainer: {
-    // backgroundColor: 'blue',
     width: '80%',
     height: '10%',
     flexDirection: 'row',
@@ -112,7 +96,6 @@ const styles = StyleSheet.create({
     textShadowRadius: 10,
   },
   dollarTextContainer: {
-    // backgroundColor: 'purple',
     width: '30%',
     justifyContent: 'center',
     alignItems: 'flex-end',
@@ -126,16 +109,11 @@ const styles = StyleSheet.create({
     width: '50%',
     height: '100%',
     justifyContent: 'center',
-    // backgroundColor: 'yellow',
-    // alignItems: 'center',
   },
   inputText: {
     fontSize: 30,
-
-    // backgroundColor: 'yellow',
   },
   addContainer: {
-    // backgroundColor: 'aquamarine',
     width: '100%',
     height: '8%',
     alignItems: 'center',
