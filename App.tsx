@@ -2,10 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Platform } from 'react-native';
 import MainTop from './components/MainTop';
-import MainBottom from './components/MainBottom';
-import AddModal from './components/AddModal';
+import MainBottom from './components/MainBottom/MainBottom';
+import AddModal from './components/AddModal/AddModal';
 import ManageModal from './components/ManageModal';
-import { Rates, Investments, Repartition } from './Interfaces';
+import { Rates, Repartition } from './Interfaces';
 
 export default function App() {
   const [addModal, setAddModal] = useState<Boolean>(false);
@@ -16,11 +16,7 @@ export default function App() {
     usdc: 0,
     usdt: 0,
   });
-  // const [investments, setInvestments] = useState<Investments>({
-  //   dai: 0,
-  //   usdc: 0,
-  //   usdt: 0,
-  // });
+
   const [investRepartition, setInvestRepartition] = useState<Repartition>({
     dai: 100,
     usdc: 0,

@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
 function DataItem({ name, rate, investment }: any) {
   return (
     <View style={styles.dataItem}>
       <View style={styles.crypto}>
         <Text style={styles.cryptoText}>{name}</Text>
-        <Text style={styles.cryptoPer}>{rate.toFixed(2)}%</Text>
+        <Text style={styles.cryptoPer}>{rate.toFixed(4)}%</Text>
       </View>
       <View style={styles.amount}>
         <Text style={styles.amountNum}>${investment}</Text>
@@ -18,7 +18,6 @@ function DataItem({ name, rate, investment }: any) {
 
 const styles = StyleSheet.create({
   dataItem: {
-    // backgroundColor: 'yellow',
     width: '100%',
     height: '27%',
     margin: 2,
@@ -26,7 +25,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   crypto: {
-    // backgroundColor: 'red',
     width: '35%',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -40,7 +38,6 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
   },
   amount: {
-    // backgroundColor: 'blue',
     width: '35%',
     flexDirection: 'row',
     justifyContent: 'center',

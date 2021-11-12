@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import DataItem from './MainBottom/DataItem';
+import DataItem from './DataItem';
+import colors from '../../assets/styles/colors';
 
 function MainBottom({
   setManageModal,
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
   bottom: {
     height: '50%',
     width: '100%',
-    backgroundColor: '#E6E8FA',
+    backgroundColor: colors.main2,
     alignItems: 'center',
   },
   titleContainer: {
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   manageButton: {
-    backgroundColor: '#FFF7EF',
+    backgroundColor: colors.main1,
     width: '60%',
     height: '50%',
     alignItems: 'center',

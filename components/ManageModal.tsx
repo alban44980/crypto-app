@@ -8,7 +8,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import colors from '../assets/styles/colors';
-import DataItem from './DataItem';
+import DataItem from './AddModal/DataItem';
 
 function ManageModal({
   manageModal,
@@ -90,14 +90,14 @@ function ManageModal({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E6E8FA',
+    backgroundColor: colors.main2,
   },
   backContainer: {
     height: '7%',
     width: '100%',
   },
   backButton: {
-    backgroundColor: '#FFF7EF',
+    backgroundColor: colors.main1,
     marginLeft: 'auto',
     marginTop: 5,
     marginRight: 5,
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   dataContainer: {
     height: '55%',
-    backgroundColor: '#FDF9F5',
+    backgroundColor: colors.main3,
     margin: 30,
     borderRadius: 20,
   },
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   confirmButton: {
-    backgroundColor: '#FFF7EF',
+    backgroundColor: colors.main1,
     height: '50%',
     width: '55%',
     alignItems: 'center',

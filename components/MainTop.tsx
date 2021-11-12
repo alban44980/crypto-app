@@ -4,7 +4,6 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  Touchable,
   Text,
   Dimensions,
   Platform,
@@ -17,7 +16,8 @@ import {
   ContributionGraph,
   StackedBarChart,
 } from 'react-native-chart-kit';
-import AddModal from './AddModal';
+import AddModal from './AddModal/AddModal';
+import colors from '../assets/styles/colors';
 
 function MainTop({ setAddModal, capital }: any) {
   return (
@@ -81,9 +81,6 @@ function MainTop({ setAddModal, capital }: any) {
           bezier
           style={{
             marginVertical: 8,
-            // borderRadius: 16,
-            // width: '90%',
-            // height: '90%',
           }}
         />
       </View>
@@ -95,7 +92,7 @@ const styles = StyleSheet.create({
   top: {
     height: '53%',
     width: '100%',
-    backgroundColor: '#FFF7EF',
+    backgroundColor: colors.main1,
     paddingTop: Platform.OS === 'android' ? 27 : 0,
   },
   addContainer: {
@@ -104,16 +101,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    // backgroundColor: 'yellow',
-    // justifyContent: 'center',
   },
   graphContainer: {
     width: '100%',
     height: '50%',
-    // paddingTop: 20,
-    // backgroundColor: 'green',
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
   profilePic: {
     width: 60,
@@ -122,7 +113,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   addButton: {
-    backgroundColor: '#E6E8FA',
+    backgroundColor: colors.main2,
     width: '30%',
     height: '50%',
     marginLeft: 'auto',
@@ -136,7 +127,6 @@ const styles = StyleSheet.create({
     height: '25%',
     alignItems: 'center',
     justifyContent: 'center',
-    // backgroundColor: 'blue',
   },
   capital: {
     fontSize: 20,

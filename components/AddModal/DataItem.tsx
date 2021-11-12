@@ -1,17 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Slider } from '@miblanchard/react-native-slider';
-import colors from '../assets/styles/colors';
-import { Investments } from '../Interfaces';
+import colors from '../../assets/styles/colors';
+import { Investments } from '../../Interfaces';
 
-function DataItem({
-  crypto,
-  color,
-  rate,
-  investRate,
-  setInvestRepartition,
-  setUpdate,
-}: any) {
+function DataItem({ crypto, color, rate, investRate, setUpdate }: any) {
   return (
     <View style={styles.dataItem}>
       <View style={styles.itemTop}>
@@ -31,7 +24,7 @@ function DataItem({
             fontWeight: 'bold',
           }}
         >
-          {rate.toFixed(2)}%
+          {rate.toFixed(4)}%
         </Text>
       </View>
       <View style={styles.itemBottom}>
