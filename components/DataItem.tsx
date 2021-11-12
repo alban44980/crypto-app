@@ -7,7 +7,6 @@ import { Investments } from '../Interfaces';
 function DataItem({
   crypto,
   color,
-  value,
   rate,
   investRate,
   setInvestRepartition,
@@ -53,15 +52,26 @@ function DataItem({
               trackStyle={{ height: 7 }}
               step={5}
               onValueChange={(value: any) => {
-                console.log(value[0]);
-                const asset = crypto.toLowerCase();
                 setInvestRepartition((previous: Investments) => {
-                  console.log('PREVIOUS ==>>>>', previous);
-                  console.log(Object.keys(previous));
+                  const asset = crypto.toLowerCase();
                   return {
                     ...previous,
                     [asset]: value[0],
                   };
+                });
+              }}
+              onSlidingComplete={(value: any) => {
+                const total = 100;
+                const diff = total - value;
+                const asset = crypto.toLowerCase();
+                setInvestRepartition((previous: Investments) => {
+                  const newState: any = { ...previous };
+                  for (let key in newState) {
+                    if (key !== asset) {
+                      newState[key] = diff / 2;
+                    }
+                  }
+                  return newState;
                 });
               }}
             />
