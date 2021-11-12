@@ -9,7 +9,7 @@ import {
   Platform,
 } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
-import colors from '../assets/styles/colors';
+import colors from '../../assets/styles/colors';
 
 function MainTop({ setAddModal, capital, rates, investRepartition }: any) {
   const annualProfit: number =
@@ -23,7 +23,7 @@ function MainTop({ setAddModal, capital, rates, investRepartition }: any) {
       <View style={styles.addContainer}>
         <Image
           style={styles.profilePic}
-          source={require('./../assets/profile_pic.jpeg')}
+          source={require('../../assets/profile_pic.jpeg')}
         />
         <TouchableOpacity
           style={styles.addButton}

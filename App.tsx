@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
-import MainTop from './components/MainTop';
+import MainTop from './components/MainTop/MainTop';
 import MainBottom from './components/MainBottom/MainBottom';
 import AddModal from './components/AddModal/AddModal';
-import ManageModal from './components/ManageModal';
+import ManageModal from './components/ManageModal/ManageModal';
 import { Rates, Repartition } from './Interfaces';
 
 export default function App() {

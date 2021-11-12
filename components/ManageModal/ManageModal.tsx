@@ -7,8 +7,8 @@ import {
   Text,
   SafeAreaView,
 } from 'react-native';
-import colors from '../assets/styles/colors';
-import DataItem from './AddModal/DataItem';
+import colors from '../../assets/styles/colors';
+import DataItem from './DataItem';
 
 function ManageModal({
   manageModal,
