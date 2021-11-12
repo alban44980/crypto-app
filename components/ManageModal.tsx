@@ -7,11 +7,16 @@ import {
   Text,
   SafeAreaView,
 } from 'react-native';
-import { Slider } from '@miblanchard/react-native-slider';
 import colors from '../assets/styles/colors';
 import DataItem from './DataItem';
 
-function ManageModal({ manageModal, setManageModal }: any) {
+function ManageModal({
+  manageModal,
+  setManageModal,
+  rates,
+  investRepartition,
+  setInvestRepartition,
+}: any) {
   return (
     <Modal
       animationType="slide"
@@ -34,9 +39,30 @@ function ManageModal({ manageModal, setManageModal }: any) {
           <Text style={styles.titleText}>MY INVESTMENTS</Text>
         </View>
         <View style={styles.dataContainer}>
-          <DataItem crypto={'DAI'} color={colors.asset1} value={100} />
-          <DataItem crypto={'USDC'} color={colors.asset2} value={0} />
-          <DataItem crypto={'USDT'} color={colors.asset3} value={0} />
+          <DataItem
+            crypto={'DAI'}
+            rate={rates.dai}
+            color={colors.asset1}
+            value={100}
+            investRate={investRepartition.dai}
+            setInvestRepartition={setInvestRepartition}
+          />
+          <DataItem
+            crypto={'USDC'}
+            rate={rates.usdc}
+            color={colors.asset2}
+            value={0}
+            investRate={investRepartition.usdc}
+            setInvestRepartition={setInvestRepartition}
+          />
+          <DataItem
+            crypto={'USDT'}
+            rate={rates.usdt}
+            color={colors.asset3}
+            value={0}
+            investRate={investRepartition.usdt}
+            setInvestRepartition={setInvestRepartition}
+          />
         </View>
         <View style={styles.confirmContainer}>
           <TouchableOpacity
@@ -45,7 +71,7 @@ function ManageModal({ manageModal, setManageModal }: any) {
               // setAddModal(false);
             }}
           >
-            <Text style={styles.confirmText}>Add</Text>
+            <Text style={styles.confirmText}>Confirm</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>

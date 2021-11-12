@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import DataItem from './MainBottom/DataItem';
 
-function MainBottom({ setManageModal, rates }: any) {
+function MainBottom({ setManageModal, rates, investments }: any) {
   return (
     <View style={styles.bottom}>
       <View style={styles.titleContainer}>
         <Text style={styles.investTitle}>My investments</Text>
       </View>
       <View style={styles.dataContainer}>
-        <DataItem name={'DAI'} rate={rates.dai} />
-        <DataItem name={'USDC'} rate={rates.usdc} />
-        <DataItem name={'USDT'} rate={rates.usdt} />
+        <DataItem name={'DAI'} rate={rates.dai} investment={investments.dai} />
+        <DataItem
+          name={'USDC'}
+          rate={rates.usdc}
+          investment={investments.usdc}
+        />
+        <DataItem
+          name={'USDT'}
+          rate={rates.usdt}
+          investment={investments.usdt}
+        />
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity

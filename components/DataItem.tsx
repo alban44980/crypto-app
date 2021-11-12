@@ -2,8 +2,16 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Slider } from '@miblanchard/react-native-slider';
 import colors from '../assets/styles/colors';
+import { Investments } from '../Interfaces';
 
-function DataItem({ crypto, color, value }: any) {
+function DataItem({
+  crypto,
+  color,
+  value,
+  rate,
+  investRate,
+  setInvestRepartition,
+}: any) {
   return (
     <View style={styles.dataItem}>
       <View style={styles.itemTop}>
@@ -23,7 +31,7 @@ function DataItem({ crypto, color, value }: any) {
             fontWeight: 'bold',
           }}
         >
-          0.90%
+          {rate.toFixed(2)}%
         </Text>
       </View>
       <View style={styles.itemBottom}>
@@ -32,16 +40,30 @@ function DataItem({ crypto, color, value }: any) {
             <Text style={{ color: color, marginRight: 'auto', paddingLeft: 8 }}>
               Allocation
             </Text>
-            <Text style={styles.allocamount1}>{value}%</Text>
+            <Text style={styles.allocamount1}>{investRate}%</Text>
           </View>
           <View style={styles.slider}>
             <Slider
-              value={0}
+              value={investRate}
               minimumTrackTintColor={color}
               maximumTrackTintColor={colors.main2}
               minimumValue={0}
+              maximumValue={100}
               thumbTintColor={color}
               trackStyle={{ height: 7 }}
+              step={5}
+              onValueChange={(value: any) => {
+                console.log(value[0]);
+                const asset = crypto.toLowerCase();
+                setInvestRepartition((previous: Investments) => {
+                  console.log('PREVIOUS ==>>>>', previous);
+                  console.log(Object.keys(previous));
+                  return {
+                    ...previous,
+                    [asset]: value[0],
+                  };
+                });
+              }}
             />
           </View>
         </View>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-function DataItem({ name, rate }: any) {
+function DataItem({ name, rate, investment }: any) {
   return (
     <View style={styles.dataItem}>
       <View style={styles.crypto}>
@@ -9,7 +9,7 @@ function DataItem({ name, rate }: any) {
         <Text style={styles.cryptoPer}>{rate.toFixed(2)}%</Text>
       </View>
       <View style={styles.amount}>
-        <Text style={styles.amountNum}>$300</Text>
+        <Text style={styles.amountNum}>${investment}</Text>
         <Text style={styles.amountText}>invested</Text>
       </View>
     </View>
