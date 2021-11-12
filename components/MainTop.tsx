@@ -8,18 +8,16 @@ import {
   Dimensions,
   Platform,
 } from 'react-native';
-import {
-  LineChart,
-  BarChart,
-  PieChart,
-  ProgressChart,
-  ContributionGraph,
-  StackedBarChart,
-} from 'react-native-chart-kit';
-import AddModal from './AddModal/AddModal';
+import { LineChart } from 'react-native-chart-kit';
 import colors from '../assets/styles/colors';
 
-function MainTop({ setAddModal, capital }: any) {
+function MainTop({ setAddModal, capital, rates, investRepartition }: any) {
+  const annualProfit: number =
+    capital +
+    (rates.dai / 100) * investRepartition.dai +
+    (rates.usdc / 100) * investRepartition.usdc +
+    (rates.usdt / 100) * investRepartition.usdt;
+
   return (
     <View style={styles.top}>
       <View style={styles.addContainer}>
@@ -44,15 +42,16 @@ function MainTop({ setAddModal, capital }: any) {
       <View style={styles.graphContainer}>
         <LineChart
           data={{
-            labels: ['Now', '2023', '2026', '2032', '2040', '2048'],
+            labels: ['Now', '2023', '2026', '2031', '2041', '2051'],
             datasets: [
               {
                 data: [
-                  Math.random() * 100,
-                  Math.random() * 100,
-                  Math.random() * 100,
-                  Math.random() * 100,
-                  Math.random() * 100,
+                  capital,
+                  annualProfit * 2,
+                  annualProfit * 5,
+                  annualProfit * 10,
+                  annualProfit * 20,
+                  annualProfit * 30,
                 ],
               },
             ],

@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Platform } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
 import MainTop from './components/MainTop';
 import MainBottom from './components/MainBottom/MainBottom';
 import AddModal from './components/AddModal/AddModal';
@@ -69,6 +68,8 @@ export default function App() {
         addModal={addModal}
         setAddModal={setAddModal}
         capital={capital}
+        rates={rates}
+        investRepartition={investRepartition}
       />
       <MainBottom
         setManageModal={setManageModal}
