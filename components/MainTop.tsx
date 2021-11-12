@@ -7,6 +7,7 @@ import {
   Touchable,
   Text,
   Dimensions,
+  Platform,
 } from 'react-native';
 import {
   LineChart,
@@ -95,6 +96,7 @@ const styles = StyleSheet.create({
     height: '53%',
     width: '100%',
     backgroundColor: '#FFF7EF',
+    paddingTop: Platform.OS === 'android' ? 27 : 0,
   },
   addContainer: {
     width: '100%',

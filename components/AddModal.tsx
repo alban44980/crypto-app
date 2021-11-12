@@ -8,6 +8,7 @@ import {
   Text,
   TextInput,
   SafeAreaView,
+  Platform,
 } from 'react-native';
 
 function AddModal({ addModal, setAddModal }: any) {
@@ -66,6 +67,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#E6E8FA',
+    // backgroundColor: Platform.OS === 'android' ? 'aquamarine' : 'red',
+
     alignItems: 'center',
     // justifyContent: 'center',
     // backgroundColor: 'purple',
