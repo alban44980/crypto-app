@@ -5,15 +5,16 @@ import MainTop from './components/MainTop';
 import MainBottom from './components/MainBottom';
 import AddModal from './components/AddModal';
 import ManageModal from './components/ManageModal';
+import { Rates } from './Interfaces';
 
 export default function App() {
   const [addModal, setAddModal] = useState<Boolean>(false);
   const [manageModal, setManageModal] = useState<Boolean>(false);
   const [capital, setCapital] = useState<number>(0);
-  const [rates, setRates] = useState<any>({
-    dai: null,
-    usdc: null,
-    usdt: null,
+  const [rates, setRates] = useState<Rates>({
+    dai: 0,
+    usdc: 0,
+    usdt: 0,
   });
 
   useEffect(() => {
@@ -21,27 +22,26 @@ export default function App() {
       .then((res) => res.json())
       .then((data) => {
         const obj = {
-          dai: null,
-          usdc: null,
-          usdt: null,
+          dai: 0,
+          usdc: 0,
+          usdt: 0,
         };
-        console.log('TYPE ==>>>', typeof data.cToken);
         for (let item of data.cToken) {
           if (item.name === 'Compound Dai') {
-            console.log('RATE FOR COMPOUND DAI ==>>> ', item.supply_rate);
-            obj.dai = item.supply_rate;
+            // console.log('RATE FOR COMPOUND DAI ==>>> ', item.supply_rate);
+            obj.dai = Number(item.supply_rate.value);
           }
           if (item.name === 'Compound USD Coin') {
-            console.log('RATE FOR COMPOUND USDC ==>>> ', item.supply_rate);
-            obj.usdc = item.supply_rate;
+            // console.log('RATE FOR COMPOUND USDC ==>>> ', item.supply_rate);
+            obj.usdc = Number(item.supply_rate.value);
           }
           if (item.name === 'Compound USDT') {
-            console.log('RATE FOR COMPOUND USDT ==>>> ', item.supply_rate);
-            obj.usdt = item.supply_rate;
+            // console.log('RATE FOR COMPOUND USDT ==>>> ', item.supply_rate);
+            obj.usdt = Number(item.supply_rate.value);
           }
           // console.log(item.name);
         }
-        console.log('obj for state ==>>> ', obj);
+        setRates(obj);
       });
   }, []);
 
@@ -65,7 +65,7 @@ export default function App() {
         setAddModal={setAddModal}
         capital={capital}
       />
-      <MainBottom setManageModal={setManageModal} />
+      <MainBottom setManageModal={setManageModal} rates={rates} />
     </SafeAreaView>
   );
 }
