@@ -34,9 +34,9 @@ function ManageModal({ manageModal, setManageModal }: any) {
           <Text style={styles.titleText}>MY INVESTMENTS</Text>
         </View>
         <View style={styles.dataContainer}>
-          <DataItem crypto={'DAI'} color={colors.asset1} />
-          <DataItem crypto={'USDC'} color={colors.asset2} />
-          <DataItem crypto={'USDT'} color={colors.asset3} />
+          <DataItem crypto={'DAI'} color={colors.asset1} value={100} />
+          <DataItem crypto={'USDC'} color={colors.asset2} value={0} />
+          <DataItem crypto={'USDT'} color={colors.asset3} value={0} />
         </View>
         <View style={styles.confirmContainer}>
           <TouchableOpacity

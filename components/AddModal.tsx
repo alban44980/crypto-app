@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
   Modal,
   TouchableOpacity,
-  Touchable,
   Text,
   TextInput,
   SafeAreaView,
-  Platform,
 } from 'react-native';
 
-function AddModal({ addModal, setAddModal }: any) {
+function AddModal({ addModal, setAddModal, setCapital }: any) {
+  const [inputState, setInputState] = useState<string>('');
+
   return (
     <Modal
       animationType="slide"
@@ -35,14 +35,23 @@ function AddModal({ addModal, setAddModal }: any) {
             <Text style={styles.dollarText}>$</Text>
           </View>
           <View style={styles.input}>
-            <TextInput style={styles.inputText} placeholder="100.00" />
+            <TextInput
+              style={styles.inputText}
+              placeholder="100.00"
+              value={inputState}
+              onChangeText={(text) => {
+                setInputState(text);
+              }}
+            />
           </View>
         </View>
         <View style={styles.addContainer}>
           <TouchableOpacity
             style={styles.addButton}
             onPress={() => {
-              // setAddModal(false);
+              setCapital((previous: number) => previous + Number(inputState));
+              setInputState('');
+              setAddModal(false);
             }}
           >
             <Text style={styles.addText}>Add</Text>

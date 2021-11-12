@@ -19,7 +19,7 @@ import {
 } from 'react-native-chart-kit';
 import AddModal from './AddModal';
 
-function MainTop({ setAddModal }: any) {
+function MainTop({ setAddModal, capital }: any) {
   return (
     <View style={styles.top}>
       <View style={styles.addContainer}>
@@ -37,7 +37,7 @@ function MainTop({ setAddModal }: any) {
         </TouchableOpacity>
       </View>
       <View style={styles.mainNumbers}>
-        <Text style={styles.capital}>$ 1000</Text>
+        <Text style={styles.capital}>$ {capital}</Text>
         <Text style={styles.interest}>$1.04795293</Text>
         <Text></Text>
       </View>
