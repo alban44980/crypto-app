@@ -5,10 +5,8 @@ import {
   Image,
   TouchableOpacity,
   Text,
-  Dimensions,
   Platform,
 } from 'react-native';
-import { LineChart } from 'react-native-chart-kit';
 import colors from '../../assets/styles/colors';
 import { MainTopProps } from '../../Interfaces';
 import Graph from './Graph';
@@ -75,7 +73,7 @@ const styles = StyleSheet.create({
     height: '53%',
     width: '100%',
     backgroundColor: colors.main1,
-    paddingTop: Platform.OS === 'android' ? 27 : 0,
+    paddingTop: Platform.OS === 'android' ? 27 : 0, //workaround as SafeAreaView works only on IOS
   },
   addContainer: {
     width: '100%',
@@ -84,7 +82,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingTop: 30,
-    // backgroundColor: 'green',
   },
   mainNumbers: {
     width: '100%',
