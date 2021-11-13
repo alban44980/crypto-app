@@ -11,6 +11,7 @@ import {
 import { LineChart } from 'react-native-chart-kit';
 import colors from '../../assets/styles/colors';
 import { MainTopProps } from '../../Interfaces';
+import Graph from './Graph';
 
 function MainTop({
   setAddModal,
@@ -64,56 +65,7 @@ function MainTop({
           )}
         </Text>
       </View>
-      <View style={styles.graphContainer}>
-        <LineChart
-          data={{
-            labels: ['Now', '2023', '2026', '2031', '2041', '2051'],
-            datasets: [
-              {
-                data: isNaN(blendedRate)
-                  ? [capital]
-                  : [
-                      capital,
-                      Math.round(capital + capital * blendedRate * 2),
-                      Math.round(capital + capital * blendedRate * 5),
-                      Math.round(capital + capital * blendedRate * 10),
-                      Math.round(capital + capital * blendedRate * 20),
-                      Math.round(capital + capital * blendedRate * 30),
-                    ],
-              },
-            ],
-          }}
-          width={Dimensions.get('window').width} // from react-native
-          height={200}
-          yAxisLabel="$"
-          yAxisSuffix=""
-          yAxisInterval={1}
-          chartConfig={{
-            // backgroundColor: '#e26a00',
-            // backgroundGradientFrom: colors.main2,
-            // backgroundGradientTo: '#ffa726',
-            backgroundGradientTo: 'rgb(109,116,174)',
-            // backgroundGradientTo: colors.main1,
-            decimalPlaces: 0,
-            color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-            labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-            style: {
-              borderRadius: 16,
-            },
-            propsForDots: {
-              r: '4',
-              strokeWidth: '1',
-              stroke: colors.main1,
-            },
-          }}
-          bezier
-          style={
-            {
-              // marginVertical: 8,
-            }
-          }
-        />
-      </View>
+      <Graph capital={capital} blendedRate={blendedRate} />
     </View>
   );
 }
@@ -147,11 +99,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'bold',
   },
-  graphContainer: {
-    width: '100%',
-    height: '50%',
-    alignItems: 'center',
-  },
+
   profilePic: {
     width: 70,
     height: 70,

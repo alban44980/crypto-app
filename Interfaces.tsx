@@ -51,3 +51,8 @@ export interface ManageItemsProps {
   investRate: number;
   setUpdate: React.Dispatch<React.SetStateAction<Crypto>>;
 }
+
+export interface GraphProps {
+  capital: number;
+  blendedRate: number;
+}
