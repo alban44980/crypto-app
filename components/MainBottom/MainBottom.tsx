@@ -15,16 +15,19 @@ function MainBottom({ setManageModal, rates, investAmounts }: MainBottomProps) {
           name={'DAI'}
           rate={rates.dai}
           investment={investAmounts.dai}
+          color={colors.asset1}
         />
         <DataItem
           name={'USDC'}
           rate={rates.usdc}
           investment={investAmounts.usdc}
+          color={colors.asset2}
         />
         <DataItem
           name={'USDT'}
           rate={rates.usdt}
           investment={investAmounts.usdt}
+          color={colors.asset3}
         />
       </View>
       <View style={styles.buttonContainer}>

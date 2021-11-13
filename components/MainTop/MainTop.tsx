@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   StyleSheet,
@@ -43,11 +43,11 @@ function MainTop({
             setAddModal(true); //When clicking on Add Funds reveal the modal
           }}
         >
-          <Text>+ Add Funds</Text>
+          <Text style={styles.addText}>+ Add Funds</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.mainNumbers}>
-        <Text style={styles.capital}>$ {capital}</Text>
+        <Text style={styles.capital}>${capital}</Text>
         <Text style={styles.interest}>
           {isNaN(blendedRate) ? (
             <Text>Add Funds !</Text>
@@ -58,9 +58,9 @@ function MainTop({
         <Text>
           1 year prediction benefits:
           {isNaN(capital * blendedRate) ? (
-            <Text> 0 $</Text>
+            <Text> $0</Text>
           ) : (
-            <Text> {(capital * blendedRate).toFixed(2)}$</Text>
+            <Text> ${(capital * blendedRate).toFixed(2)}</Text>
           )}
         </Text>
       </View>
@@ -87,27 +87,31 @@ function MainTop({
           height={200}
           yAxisLabel="$"
           yAxisSuffix=""
-          yAxisInterval={1} // optional, defaults to 1
+          yAxisInterval={1}
           chartConfig={{
-            backgroundColor: '#e26a00',
-            backgroundGradientFrom: '#fb8c00',
-            backgroundGradientTo: '#ffa726',
-            decimalPlaces: 2, // optional, defaults to 2dp
+            // backgroundColor: '#e26a00',
+            // backgroundGradientFrom: 'black',
+            // backgroundGradientTo: '#ffa726',
+            backgroundGradientTo: 'rgb(109,116,174)',
+            // backgroundGradientTo: '#fdeaea',
+            decimalPlaces: 0,
             color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
             labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
             style: {
               borderRadius: 16,
             },
             propsForDots: {
-              r: '6',
-              strokeWidth: '2',
-              stroke: '#ffa726',
+              r: '4',
+              strokeWidth: '1',
+              stroke: colors.main1,
             },
           }}
           bezier
-          style={{
-            marginVertical: 8,
-          }}
+          style={
+            {
+              // marginVertical: 8,
+            }
+          }
         />
       </View>
     </View>
@@ -123,34 +127,16 @@ const styles = StyleSheet.create({
   },
   addContainer: {
     width: '100%',
-    height: '25%',
+    height: '20%',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  graphContainer: {
-    width: '100%',
-    height: '50%',
-  },
-  profilePic: {
-    width: 60,
-    height: 60,
-    borderRadius: 50,
-    marginLeft: 20,
-  },
-  addButton: {
-    backgroundColor: colors.main2,
-    width: '30%',
-    height: '50%',
-    marginLeft: 'auto',
-    marginRight: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 20,
+    paddingTop: 30,
+    // backgroundColor: 'green',
   },
   mainNumbers: {
     width: '100%',
-    height: '25%',
+    height: '30%',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -159,6 +145,30 @@ const styles = StyleSheet.create({
   },
   interest: {
     fontSize: 40,
+    fontWeight: 'bold',
+  },
+  graphContainer: {
+    width: '100%',
+    height: '50%',
+    alignItems: 'center',
+  },
+  profilePic: {
+    width: 70,
+    height: 70,
+    borderRadius: 50,
+    marginLeft: 20,
+  },
+  addButton: {
+    backgroundColor: colors.main2,
+    width: '30%',
+    height: '85%',
+    marginLeft: 'auto',
+    marginRight: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 20,
+  },
+  addText: {
     fontWeight: 'bold',
   },
 });

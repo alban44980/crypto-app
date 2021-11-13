@@ -25,6 +25,7 @@ export interface BottomItemProps {
   name: string;
   rate: number;
   investment: number;
+  color: string;
 }
 
 export interface MainBottomProps {

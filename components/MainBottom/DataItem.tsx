@@ -2,12 +2,31 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { BottomItemProps } from '../../Interfaces';
 
-function DataItem({ name, rate, investment }: BottomItemProps) {
+function DataItem({ name, rate, investment, color }: BottomItemProps) {
   return (
     <View style={styles.dataItem}>
       <View style={styles.crypto}>
-        <Text style={styles.cryptoText}>{name}</Text>
-        <Text style={styles.cryptoPer}>{rate.toFixed(4)}%</Text>
+        <View style={styles.cryptoBox}>
+          <Text
+            style={{
+              fontWeight: 'bold',
+              fontSize: 18,
+              color: color,
+            }}
+          >
+            {name}
+          </Text>
+        </View>
+        <View style={styles.cryptoBox}>
+          <Text
+            style={{
+              paddingLeft: 8,
+              color: color,
+            }}
+          >
+            {rate.toFixed(4)}%
+          </Text>
+        </View>
       </View>
       <View style={styles.amount}>
         <Text style={styles.amountNum}>${investment}</Text>
@@ -31,18 +50,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  cryptoText: {
-    fontWeight: 'bold',
-    fontSize: 18,
-  },
-  cryptoPer: {
-    paddingLeft: 8,
+  cryptoBox: {
+    width: '50%',
+    alignItems: 'center',
   },
   amount: {
     width: '35%',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    marginLeft: 20,
   },
   amountNum: {
     fontWeight: 'bold',
