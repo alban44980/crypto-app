@@ -4,31 +4,31 @@ import MainTop from './components/MainTop/MainTop';
 import MainBottom from './components/MainBottom/MainBottom';
 import AddModal from './components/AddModal/AddModal';
 import ManageModal from './components/ManageModal/ManageModal';
-import { Rates, Repartition } from './Interfaces';
+import { Crypto } from './Interfaces';
 
 export default function App() {
-  const [addModal, setAddModal] = useState<Boolean>(false);
-  const [manageModal, setManageModal] = useState<Boolean>(false);
+  const [addModal, setAddModal] = useState<boolean>(false);
+  const [manageModal, setManageModal] = useState<boolean>(false);
   const [capital, setCapital] = useState<number>(0);
-  const [rates, setRates] = useState<Rates>({
+  const [rates, setRates] = useState<Crypto>({
     dai: 0,
     usdc: 0,
     usdt: 0,
   });
 
-  const [investRepartition, setInvestRepartition] = useState<Repartition>({
+  const [investRepartition, setInvestRepartition] = useState<Crypto>({
     dai: 100,
     usdc: 0,
     usdt: 0,
   });
 
-  const [investAmounts, setInvestAmounts] = useState<Repartition>({
+  const [investAmounts, setInvestAmounts] = useState<Crypto>({
     dai: 0,
     usdc: 0,
     usdt: 0,
   });
 
-  const [blendedRate, setBlendedRate] = useState<Number>(0);
+  const [blendedRate, setBlendedRate] = useState<number>(0);
 
   useEffect(() => {
     fetch('https://api.compound.finance/api/v2/ctoken')
@@ -60,11 +60,7 @@ export default function App() {
         <AddModal
           addModal={addModal}
           setAddModal={setAddModal}
-          capital={capital}
           setCapital={setCapital}
-          setBlendedRate={setBlendedRate}
-          rates={rates}
-          investAmounts={investAmounts}
           setInvestAmounts={setInvestAmounts}
         />
       )}
@@ -80,7 +76,6 @@ export default function App() {
         />
       )}
       <MainTop
-        addModal={addModal}
         setAddModal={setAddModal}
         capital={capital}
         rates={rates}
@@ -88,15 +83,11 @@ export default function App() {
         blendedRate={blendedRate}
         setBlendedRate={setBlendedRate}
         investAmounts={investAmounts}
-        setInvestAmounts={setInvestAmounts}
       />
       <MainBottom
         setManageModal={setManageModal}
         rates={rates}
-        capital={capital}
-        investRepartition={investRepartition}
         investAmounts={investAmounts}
-        setInvestAmounts={setInvestAmounts}
       />
     </SafeAreaView>
   );

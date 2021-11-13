@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import colors from '../../assets/styles/colors';
 import DataItem from './DataItem';
-import { Repartition } from '../../Interfaces';
+import { Crypto } from '../../Interfaces';
 
 function ManageModal({
   manageModal,
@@ -47,30 +47,21 @@ function ManageModal({
             crypto={'DAI'}
             rate={rates.dai}
             color={colors.asset1}
-            value={100}
             investRate={update.dai}
-            setInvestRepartition={setInvestRepartition}
-            update={update}
             setUpdate={setUpdate}
           />
           <DataItem
             crypto={'USDC'}
             rate={rates.usdc}
             color={colors.asset2}
-            value={0}
             investRate={update.usdc}
-            setInvestRepartition={setInvestRepartition}
-            update={update}
             setUpdate={setUpdate}
           />
           <DataItem
             crypto={'USDT'}
             rate={rates.usdt}
             color={colors.asset3}
-            value={0}
             investRate={update.usdt}
-            setInvestRepartition={setInvestRepartition}
-            update={update}
             setUpdate={setUpdate}
           />
         </View>
@@ -79,7 +70,7 @@ function ManageModal({
             style={styles.confirmButton}
             onPress={() => {
               setInvestRepartition(update);
-              setInvestAmounts((previous: Repartition) => {
+              setInvestAmounts((previous: Crypto) => {
                 return {
                   ...previous,
                   dai: (update.dai * capital) / 100,

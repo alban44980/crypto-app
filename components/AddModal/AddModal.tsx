@@ -8,17 +8,14 @@ import {
   TextInput,
   SafeAreaView,
 } from 'react-native';
+import { AddModalProps, Crypto } from '../../Interfaces';
 
 function AddModal({
   addModal,
   setAddModal,
-  capital,
   setCapital,
-  rates,
-  investAmounts,
   setInvestAmounts,
-  setBlendedRate,
-}: any) {
+}: AddModalProps) {
   const [inputState, setInputState] = useState<string>('');
 
   return (
@@ -59,7 +56,7 @@ function AddModal({
             style={styles.addButton}
             onPress={() => {
               setCapital((previous: number) => previous + Number(inputState));
-              setInvestAmounts((previous: any) => {
+              setInvestAmounts((previous: Crypto) => {
                 const value = previous.dai + Number(inputState);
                 return {
                   ...previous,

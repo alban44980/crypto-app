@@ -2,27 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import DataItem from './DataItem';
 import colors from '../../assets/styles/colors';
-import { Repartition } from '../../Interfaces';
+import { Crypto, MainBottomProps } from '../../Interfaces';
 
-function MainBottom({
-  setManageModal,
-  rates,
-  investRepartition,
-  capital,
-  investAmounts,
-  setInvestAmounts,
-}: any) {
-  // useEffect(() => {
-  //   setInvestAmounts((previous: Repartition) => {
-  //     return {
-  //       ...previous,
-  //       dai: (investRepartition.dai * capital) / 100,
-  //       usdc: (investRepartition.usdc * capital) / 100,
-  //       usdt: (investRepartition.usdt * capital) / 100,
-  //     };
-  //   });
-  // }, [capital, investRepartition]);
-
+function MainBottom({ setManageModal, rates, investAmounts }: MainBottomProps) {
   return (
     <View style={styles.bottom}>
       <View style={styles.titleContainer}>

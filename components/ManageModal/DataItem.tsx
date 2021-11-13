@@ -2,9 +2,15 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Slider } from '@miblanchard/react-native-slider';
 import colors from '../../assets/styles/colors';
-import { Investments } from '../../Interfaces';
+import { Crypto, ManageItemsProps } from '../../Interfaces';
 
-function DataItem({ crypto, color, rate, investRate, setUpdate }: any) {
+function DataItem({
+  crypto,
+  color,
+  rate,
+  investRate,
+  setUpdate,
+}: ManageItemsProps) {
   return (
     <View style={styles.dataItem}>
       <View style={styles.itemTop}>
@@ -46,7 +52,7 @@ function DataItem({ crypto, color, rate, investRate, setUpdate }: any) {
               trackStyle={{ height: 7 }}
               step={5}
               onValueChange={(value: any) => {
-                setUpdate((previous: Investments) => {
+                setUpdate((previous: Crypto) => {
                   const asset = crypto.toLowerCase();
                   return {
                     ...previous,
@@ -58,7 +64,7 @@ function DataItem({ crypto, color, rate, investRate, setUpdate }: any) {
                 const total = 100;
                 const diff = total - value;
                 const asset = crypto.toLowerCase();
-                setUpdate((previous: Investments) => {
+                setUpdate((previous: Crypto) => {
                   const newState: any = { ...previous };
                   for (let key in newState) {
                     if (key !== asset) {

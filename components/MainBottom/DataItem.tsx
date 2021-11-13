@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import { BottomItemProps } from '../../Interfaces';
 
-function DataItem({ name, rate, investment }: any) {
+function DataItem({ name, rate, investment }: BottomItemProps) {
   return (
     <View style={styles.dataItem}>
       <View style={styles.crypto}>

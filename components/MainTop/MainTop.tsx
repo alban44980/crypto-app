@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
 import colors from '../../assets/styles/colors';
+import { MainTopProps } from '../../Interfaces';
 
 function MainTop({
   setAddModal,
@@ -19,7 +20,7 @@ function MainTop({
   blendedRate,
   setBlendedRate,
   investAmounts,
-}: any) {
+}: MainTopProps) {
   ///[($100,000 x 0.04) + ($170,000 x 0.1)] / ($100,000 + $170,000) = 7.77%
 
   useEffect(() => {
@@ -56,11 +57,11 @@ function MainTop({
           )}
         </Text>
         <Text>
-          1 year prediction benefits:{' '}
+          1 year prediction benefits:
           {isNaN(capital * blendedRate) ? (
             <Text>0$</Text>
           ) : (
-            <Text>{(capital * blendedRate).toFixed(2)}</Text>
+            <Text> {(capital * blendedRate).toFixed(2)}$</Text>
           )}
         </Text>
       </View>
