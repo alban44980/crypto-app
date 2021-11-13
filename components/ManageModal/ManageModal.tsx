@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import colors from '../../assets/styles/colors';
 import DataItem from './DataItem';
+import { Repartition } from '../../Interfaces';
 
 function ManageModal({
   manageModal,
@@ -16,6 +17,8 @@ function ManageModal({
   rates,
   investRepartition,
   setInvestRepartition,
+  setInvestAmounts,
+  capital,
 }: any) {
   const [update, setUpdate] = useState({ ...investRepartition });
   return (
@@ -76,6 +79,14 @@ function ManageModal({
             style={styles.confirmButton}
             onPress={() => {
               setInvestRepartition(update);
+              setInvestAmounts((previous: Repartition) => {
+                return {
+                  ...previous,
+                  dai: (update.dai * capital) / 100,
+                  usdc: (update.usdc * capital) / 100,
+                  usdt: (update.usdt * capital) / 100,
+                };
+              });
               setManageModal(false);
             }}
           >

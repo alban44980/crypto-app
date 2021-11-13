@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   StyleSheet,
@@ -11,12 +11,24 @@ import {
 import { LineChart } from 'react-native-chart-kit';
 import colors from '../../assets/styles/colors';
 
-function MainTop({ setAddModal, capital, rates, investRepartition }: any) {
-  const annualProfit: number =
-    capital +
-    (rates.dai / 100) * investRepartition.dai +
-    (rates.usdc / 100) * investRepartition.usdc +
-    (rates.usdt / 100) * investRepartition.usdt;
+function MainTop({
+  setAddModal,
+  capital,
+  rates,
+  investRepartition,
+  blendedRate,
+  setBlendedRate,
+  investAmounts,
+}: any) {
+  ///[($100,000 x 0.04) + ($170,000 x 0.1)] / ($100,000 + $170,000) = 7.77%
+
+  useEffect(() => {
+    const totalInvests =
+      investAmounts.dai * rates.dai +
+      investAmounts.usdc * rates.usdc +
+      investAmounts.usdt * rates.usdt;
+    setBlendedRate(totalInvests / capital);
+  }, [capital, investRepartition]);
 
   return (
     <View style={styles.top}>
@@ -36,8 +48,21 @@ function MainTop({ setAddModal, capital, rates, investRepartition }: any) {
       </View>
       <View style={styles.mainNumbers}>
         <Text style={styles.capital}>$ {capital}</Text>
-        <Text style={styles.interest}>$1.04795293</Text>
-        <Text></Text>
+        <Text style={styles.interest}>
+          {isNaN(blendedRate) ? (
+            <Text>Add Funds !</Text>
+          ) : (
+            <Text>{blendedRate.toFixed(4)}%</Text>
+          )}
+        </Text>
+        <Text>
+          1 year prediction benefits:{' '}
+          {isNaN(capital * blendedRate) ? (
+            <Text>0$</Text>
+          ) : (
+            <Text>{(capital * blendedRate).toFixed(2)}</Text>
+          )}
+        </Text>
       </View>
       <View style={styles.graphContainer}>
         <LineChart
@@ -45,14 +70,16 @@ function MainTop({ setAddModal, capital, rates, investRepartition }: any) {
             labels: ['Now', '2023', '2026', '2031', '2041', '2051'],
             datasets: [
               {
-                data: [
-                  capital,
-                  annualProfit * 2,
-                  annualProfit * 5,
-                  annualProfit * 10,
-                  annualProfit * 20,
-                  annualProfit * 30,
-                ],
+                data: isNaN(blendedRate)
+                  ? [capital]
+                  : [
+                      capital,
+                      Math.round(capital + capital * blendedRate * 2),
+                      Math.round(capital + capital * blendedRate * 5),
+                      Math.round(capital + capital * blendedRate * 10),
+                      Math.round(capital + capital * blendedRate * 20),
+                      Math.round(capital + capital * blendedRate * 30),
+                    ],
               },
             ],
           }}

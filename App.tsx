@@ -28,6 +28,8 @@ export default function App() {
     usdt: 0,
   });
 
+  const [blendedRate, setBlendedRate] = useState<Number>(0);
+
   useEffect(() => {
     fetch('https://api.compound.finance/api/v2/ctoken')
       .then((res) => res.json())
@@ -58,16 +60,23 @@ export default function App() {
         <AddModal
           addModal={addModal}
           setAddModal={setAddModal}
+          capital={capital}
           setCapital={setCapital}
+          setBlendedRate={setBlendedRate}
+          rates={rates}
+          investAmounts={investAmounts}
+          setInvestAmounts={setInvestAmounts}
         />
       )}
       {manageModal && (
         <ManageModal
+          capital={capital}
           manageModal={manageModal}
           setManageModal={setManageModal}
           rates={rates}
           investRepartition={investRepartition}
           setInvestRepartition={setInvestRepartition}
+          setInvestAmounts={setInvestAmounts}
         />
       )}
       <MainTop
@@ -76,6 +85,10 @@ export default function App() {
         capital={capital}
         rates={rates}
         investRepartition={investRepartition}
+        blendedRate={blendedRate}
+        setBlendedRate={setBlendedRate}
+        investAmounts={investAmounts}
+        setInvestAmounts={setInvestAmounts}
       />
       <MainBottom
         setManageModal={setManageModal}

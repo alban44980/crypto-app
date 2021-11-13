@@ -9,7 +9,16 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-function AddModal({ addModal, setAddModal, setCapital }: any) {
+function AddModal({
+  addModal,
+  setAddModal,
+  capital,
+  setCapital,
+  rates,
+  investAmounts,
+  setInvestAmounts,
+  setBlendedRate,
+}: any) {
   const [inputState, setInputState] = useState<string>('');
 
   return (
@@ -50,6 +59,13 @@ function AddModal({ addModal, setAddModal, setCapital }: any) {
             style={styles.addButton}
             onPress={() => {
               setCapital((previous: number) => previous + Number(inputState));
+              setInvestAmounts((previous: any) => {
+                const value = previous.dai + Number(inputState);
+                return {
+                  ...previous,
+                  dai: value,
+                };
+              });
               setInputState('');
               setAddModal(false);
             }}

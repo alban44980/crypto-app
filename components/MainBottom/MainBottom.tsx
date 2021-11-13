@@ -12,17 +12,16 @@ function MainBottom({
   investAmounts,
   setInvestAmounts,
 }: any) {
-  useEffect(() => {
-    console.log('RUNNING FROM MAIN BOTTOM');
-    setInvestAmounts((previous: Repartition) => {
-      return {
-        ...previous,
-        dai: (investRepartition.dai * capital) / 100,
-        usdc: (investRepartition.usdc * capital) / 100,
-        usdt: (investRepartition.usdt * capital) / 100,
-      };
-    });
-  }, [capital, investRepartition]);
+  // useEffect(() => {
+  //   setInvestAmounts((previous: Repartition) => {
+  //     return {
+  //       ...previous,
+  //       dai: (investRepartition.dai * capital) / 100,
+  //       usdc: (investRepartition.usdc * capital) / 100,
+  //       usdt: (investRepartition.usdt * capital) / 100,
+  //     };
+  //   });
+  // }, [capital, investRepartition]);
 
   return (
     <View style={styles.bottom}>
