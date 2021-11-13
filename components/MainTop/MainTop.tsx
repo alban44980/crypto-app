@@ -90,10 +90,10 @@ function MainTop({
           yAxisInterval={1}
           chartConfig={{
             // backgroundColor: '#e26a00',
-            // backgroundGradientFrom: 'black',
+            // backgroundGradientFrom: colors.main2,
             // backgroundGradientTo: '#ffa726',
             backgroundGradientTo: 'rgb(109,116,174)',
-            // backgroundGradientTo: '#fdeaea',
+            // backgroundGradientTo: colors.main1,
             decimalPlaces: 0,
             color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
             labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,

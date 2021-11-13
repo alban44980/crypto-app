@@ -8,6 +8,7 @@ import {
   TextInput,
   SafeAreaView,
 } from 'react-native';
+import colors from '../../assets/styles/colors';
 import { AddModalProps, Crypto } from '../../Interfaces';
 
 function AddModal({
@@ -80,7 +81,7 @@ function AddModal({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E6E8FA',
+    backgroundColor: colors.main2,
     alignItems: 'center',
   },
   backContainer: {
@@ -88,11 +89,11 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   backButton: {
-    backgroundColor: '#FFF7EF',
+    backgroundColor: colors.main1,
     marginLeft: 'auto',
     marginTop: 5,
     marginRight: 5,
-    height: '15%',
+    height: '20%',
     width: '30%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   addButton: {
-    backgroundColor: '#FFF7EF',
+    backgroundColor: colors.main1,
     height: '100%',
     width: '50%',
     alignItems: 'center',
