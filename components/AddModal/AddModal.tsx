@@ -16,7 +16,7 @@ function AddModal({
   setCapital,
   setInvestAmounts,
 }: AddModalProps) {
-  const [inputState, setInputState] = useState<string>('');
+  const [inputState, setInputState] = useState<string>(''); //state keeping track of input value
 
   return (
     <Modal
@@ -30,7 +30,7 @@ function AddModal({
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => {
-              setAddModal(false);
+              setAddModal(false); //When clicking on back button hide the Add Modal
             }}
           >
             <Text style={styles.backText}>BACK BUTTON</Text>
@@ -46,7 +46,7 @@ function AddModal({
               placeholder="100.00"
               value={inputState}
               onChangeText={(text) => {
-                setInputState(text);
+                setInputState(text); //updating the input state on change
               }}
             />
           </View>
@@ -55,7 +55,9 @@ function AddModal({
           <TouchableOpacity
             style={styles.addButton}
             onPress={() => {
-              setCapital((previous: number) => previous + Number(inputState));
+              setCapital((previous: number) => previous + Number(inputState)); //update capital state
+
+              //update investment amounts, by default add to the DAI asset
               setInvestAmounts((previous: Crypto) => {
                 const value = previous.dai + Number(inputState);
                 return {
@@ -63,8 +65,8 @@ function AddModal({
                   dai: value,
                 };
               });
-              setInputState('');
-              setAddModal(false);
+              setInputState(''); // Resetting the input value state
+              setAddModal(false); //Hide the add modal
             }}
           >
             <Text style={styles.addText}>Add</Text>

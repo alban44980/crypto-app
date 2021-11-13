@@ -30,7 +30,7 @@ function DataItem({
             fontWeight: 'bold',
           }}
         >
-          {rate.toFixed(4)}%
+          {rate.toFixed(4)} %
         </Text>
       </View>
       <View style={styles.itemBottom}>

@@ -11,6 +11,16 @@ export interface AddModalProps {
   setInvestAmounts: React.Dispatch<React.SetStateAction<Crypto>>;
 }
 
+export interface ManageModalProps {
+  manageModal: boolean;
+  setManageModal: React.Dispatch<React.SetStateAction<boolean>>;
+  rates: Crypto;
+  investRepartition: Crypto;
+  setInvestRepartition: React.Dispatch<React.SetStateAction<Crypto>>;
+  setInvestAmounts: React.Dispatch<React.SetStateAction<Crypto>>;
+  capital: number;
+}
+
 export interface BottomItemProps {
   name: string;
   rate: number;

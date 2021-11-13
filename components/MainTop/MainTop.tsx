@@ -21,8 +21,7 @@ function MainTop({
   setBlendedRate,
   investAmounts,
 }: MainTopProps) {
-  ///[($100,000 x 0.04) + ($170,000 x 0.1)] / ($100,000 + $170,000) = 7.77%
-
+  //Updating Blended Rate everytime the capital or investment allocations change
   useEffect(() => {
     const totalInvests =
       investAmounts.dai * rates.dai +
@@ -41,7 +40,7 @@ function MainTop({
         <TouchableOpacity
           style={styles.addButton}
           onPress={() => {
-            setAddModal(true);
+            setAddModal(true); //When clicking on Add Funds reveal the modal
           }}
         >
           <Text>+ Add Funds</Text>
@@ -59,7 +58,7 @@ function MainTop({
         <Text>
           1 year prediction benefits:
           {isNaN(capital * blendedRate) ? (
-            <Text>0$</Text>
+            <Text> 0 $</Text>
           ) : (
             <Text> {(capital * blendedRate).toFixed(2)}$</Text>
           )}

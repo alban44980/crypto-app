@@ -7,29 +7,35 @@ import ManageModal from './components/ManageModal/ManageModal';
 import { Crypto } from './Interfaces';
 
 export default function App() {
-  const [addModal, setAddModal] = useState<boolean>(false);
-  const [manageModal, setManageModal] = useState<boolean>(false);
-  const [capital, setCapital] = useState<number>(0);
+  const [addModal, setAddModal] = useState<boolean>(false); //state to toggle the add funds modal
+  const [manageModal, setManageModal] = useState<boolean>(false); //state to toggle the manage investments modal
+  const [capital, setCapital] = useState<number>(0); //total amount invested
+
+  //will store rates coming from the api
   const [rates, setRates] = useState<Crypto>({
     dai: 0,
     usdc: 0,
     usdt: 0,
   });
 
+  //allocation per asset in percentage
   const [investRepartition, setInvestRepartition] = useState<Crypto>({
     dai: 100,
     usdc: 0,
     usdt: 0,
   });
 
+  //allocation per asset in dollars
   const [investAmounts, setInvestAmounts] = useState<Crypto>({
     dai: 0,
     usdc: 0,
     usdt: 0,
   });
 
+  //blended rate state
   const [blendedRate, setBlendedRate] = useState<number>(0);
 
+  //making the call to the API on app load
   useEffect(() => {
     fetch('https://api.compound.finance/api/v2/ctoken')
       .then((res) => res.json())
@@ -50,7 +56,7 @@ export default function App() {
             obj.usdt = Number(item.supply_rate.value);
           }
         }
-        setRates(obj);
+        setRates(obj); //updating our rates state with values from the API
       });
   }, []);
 

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import colors from '../../assets/styles/colors';
 import DataItem from './DataItem';
-import { Crypto } from '../../Interfaces';
+import { Crypto, ManageModalProps } from '../../Interfaces';
 
 function ManageModal({
   manageModal,
@@ -19,7 +19,7 @@ function ManageModal({
   setInvestRepartition,
   setInvestAmounts,
   capital,
-}: any) {
+}: ManageModalProps) {
   const [update, setUpdate] = useState({ ...investRepartition });
   return (
     <Modal
@@ -33,7 +33,7 @@ function ManageModal({
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => {
-              setManageModal(false);
+              setManageModal(false); //when pressing the back button hide the modal
             }}
           >
             <Text style={styles.backText}>BACK</Text>
@@ -69,7 +69,9 @@ function ManageModal({
           <TouchableOpacity
             style={styles.confirmButton}
             onPress={() => {
-              setInvestRepartition(update);
+              setInvestRepartition(update); //Update investments allocation in %
+
+              //update investments allocation in $
               setInvestAmounts((previous: Crypto) => {
                 return {
                   ...previous,
@@ -78,7 +80,7 @@ function ManageModal({
                   usdt: (update.usdt * capital) / 100,
                 };
               });
-              setManageModal(false);
+              setManageModal(false); //hide the modal
             }}
           >
             <Text style={styles.confirmText}>Confirm</Text>

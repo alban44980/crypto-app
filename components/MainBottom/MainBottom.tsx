@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import DataItem from './DataItem';
 import colors from '../../assets/styles/colors';
-import { Crypto, MainBottomProps } from '../../Interfaces';
+import { MainBottomProps } from '../../Interfaces';
 
 function MainBottom({ setManageModal, rates, investAmounts }: MainBottomProps) {
   return (
@@ -31,7 +31,7 @@ function MainBottom({ setManageModal, rates, investAmounts }: MainBottomProps) {
         <TouchableOpacity
           style={styles.manageButton}
           onPress={() => {
-            setManageModal(true);
+            setManageModal(true); //When clicking on Manage, reveal the modal
           }}
         >
           <Text style={styles.manageText}>Manage</Text>
@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   titleContainer: {
-    // backgroundColor: 'green',
     width: '100%',
     height: '15%',
     alignItems: 'center',
@@ -60,14 +59,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   dataContainer: {
-    // backgroundColor: 'red',
     height: '55%',
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
   },
   buttonContainer: {
-    // backgroundColor: 'aquamarine',
     height: '30%',
     width: '100%',
     alignItems: 'center',
