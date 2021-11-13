@@ -22,6 +22,12 @@ export default function App() {
     usdt: 0,
   });
 
+  const [investAmounts, setInvestAmounts] = useState<Repartition>({
+    dai: 0,
+    usdc: 0,
+    usdt: 0,
+  });
+
   useEffect(() => {
     fetch('https://api.compound.finance/api/v2/ctoken')
       .then((res) => res.json())
@@ -76,6 +82,8 @@ export default function App() {
         rates={rates}
         capital={capital}
         investRepartition={investRepartition}
+        investAmounts={investAmounts}
+        setInvestAmounts={setInvestAmounts}
       />
     </SafeAreaView>
   );

@@ -1,14 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import DataItem from './DataItem';
 import colors from '../../assets/styles/colors';
+import { Repartition } from '../../Interfaces';
 
 function MainBottom({
   setManageModal,
   rates,
   investRepartition,
   capital,
+  investAmounts,
+  setInvestAmounts,
 }: any) {
+  useEffect(() => {
+    console.log('RUNNING FROM MAIN BOTTOM');
+    setInvestAmounts((previous: Repartition) => {
+      return {
+        ...previous,
+        dai: (investRepartition.dai * capital) / 100,
+        usdc: (investRepartition.usdc * capital) / 100,
+        usdt: (investRepartition.usdt * capital) / 100,
+      };
+    });
+  }, [capital, investRepartition]);
+
   return (
     <View style={styles.bottom}>
       <View style={styles.titleContainer}>
@@ -18,17 +33,17 @@ function MainBottom({
         <DataItem
           name={'DAI'}
           rate={rates.dai}
-          investment={(investRepartition.dai * capital) / 100}
+          investment={investAmounts.dai}
         />
         <DataItem
           name={'USDC'}
           rate={rates.usdc}
-          investment={(investRepartition.usdc * capital) / 100}
+          investment={investAmounts.usdc}
         />
         <DataItem
           name={'USDT'}
           rate={rates.usdt}
-          investment={(investRepartition.usdt * capital) / 100}
+          investment={investAmounts.usdt}
         />
       </View>
       <View style={styles.buttonContainer}>
