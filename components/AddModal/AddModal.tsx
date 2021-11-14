@@ -36,7 +36,7 @@ function AddModal({
               setAddModal(false); //When clicking on back button hide the Add Modal
             }}
           >
-            <Text style={styles.backText}>BACK BUTTON</Text>
+            <Text>BACK</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.inputContainer}>
@@ -100,13 +100,13 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginTop: 5,
     marginRight: 5,
-    height: '20%',
+    height: '15%',
     width: '30%',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
+    borderWidth: 1,
   },
-  backText: {},
   inputContainer: {
     width: '80%',
     height: '10%',
@@ -149,6 +149,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
+    borderWidth: 1,
   },
   addText: {
     fontSize: 25,

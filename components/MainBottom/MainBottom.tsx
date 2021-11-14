@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: colors.main2,
     alignItems: 'center',
+    paddingTop: 15,
   },
   titleContainer: {
     width: '100%',
@@ -80,6 +81,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
+    borderWidth: 1,
   },
   manageText: {
     fontWeight: 'bold',

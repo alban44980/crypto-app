@@ -42,7 +42,7 @@ function SliderItem({
                 } else if (diff < 0) {
                   if (newState[key] >= adjust) {
                     newState[key] = newState[key] - adjust;
-                    //if decreasing made it under 0, set it to 0
+                    //if decreasing would make it under 0, set it to 0
                   } else if (newState[key] < adjust) {
                     edgeCase = true;
                     newState[key] = 0;

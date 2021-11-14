@@ -22,6 +22,8 @@ function DataItem({ name, rate, investment, color }: BottomItemProps) {
             style={{
               paddingLeft: 8,
               color: color,
+              fontSize: 15,
+              fontWeight: 'bold',
             }}
           >
             {rate.toFixed(4)}%
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   crypto: {
-    width: '35%',
+    width: '40%',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

@@ -54,7 +54,7 @@ function MainTop({
             <Text>{blendedRate.toFixed(4)}%</Text>
           )}
         </Text>
-        <Text>
+        <Text style={styles.prediction}>
           1 year prediction benefits:
           {isNaN(capital * blendedRate) ? (
             <Text> $0</Text>
@@ -90,13 +90,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   capital: {
-    fontSize: 20,
+    fontSize: 22,
   },
   interest: {
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: 'bold',
   },
-
+  prediction: {
+    fontSize: 15,
+  },
   profilePic: {
     width: 70,
     height: 70,
@@ -112,6 +114,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
+    borderWidth: 1,
   },
   addText: {
     fontWeight: 'bold',

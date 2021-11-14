@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
+    borderWidth: 1,
   },
   backText: {},
   titleContainer: {
@@ -139,6 +140,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
+    borderWidth: 1,
   },
   confirmText: {
     fontSize: 25,
