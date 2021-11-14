@@ -49,8 +49,6 @@ function ManageModal({
             color={colors.asset1}
             investRate={update.dai}
             setUpdate={setUpdate}
-            update={update}
-            updateItem={update.dai}
           />
           <SliderItem
             crypto={'usdc'}
@@ -58,8 +56,6 @@ function ManageModal({
             color={colors.asset2}
             investRate={update.usdc}
             setUpdate={setUpdate}
-            update={update}
-            updateItem={update.usdc}
           />
           <SliderItem
             crypto={'usdt'}
@@ -67,8 +63,6 @@ function ManageModal({
             color={colors.asset3}
             investRate={update.usdt}
             setUpdate={setUpdate}
-            update={update}
-            updateItem={update.usdt}
           />
         </View>
         <View style={styles.confirmContainer}>

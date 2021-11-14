@@ -66,8 +66,10 @@ export default function App() {
         <AddModal
           addModal={addModal}
           setAddModal={setAddModal}
+          capital={capital}
           setCapital={setCapital}
           setInvestAmounts={setInvestAmounts}
+          investRepartition={investRepartition}
         />
       )}
       {manageModal && (

@@ -29,7 +29,7 @@ function DataItem({ name, rate, investment, color }: BottomItemProps) {
         </View>
       </View>
       <View style={styles.amount}>
-        <Text style={styles.amountNum}>${investment}</Text>
+        <Text style={styles.amountNum}>${Math.round(investment)}</Text>
         <Text style={styles.amountText}>invested</Text>
       </View>
     </View>

@@ -7,8 +7,10 @@ export interface Crypto {
 export interface AddModalProps {
   addModal: boolean;
   setAddModal: React.Dispatch<React.SetStateAction<boolean>>;
+  capital: number;
   setCapital: React.Dispatch<React.SetStateAction<number>>;
   setInvestAmounts: React.Dispatch<React.SetStateAction<Crypto>>;
+  investRepartition: Crypto;
 }
 
 export interface ManageModalProps {
@@ -50,8 +52,6 @@ export interface ManageItemsProps {
   rate: number;
   investRate: number;
   setUpdate: React.Dispatch<React.SetStateAction<Crypto>>;
-  updateItem: number;
-  update: Crypto;
 }
 
 export interface GraphProps {

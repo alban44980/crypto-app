@@ -10,8 +10,6 @@ function SliderItem({
   rate,
   investRate,
   setUpdate,
-  updateItem,
-  update,
 }: ManageItemsProps) {
   // const [sliderValue, setSliderValue] = useState(investRate);
   return (

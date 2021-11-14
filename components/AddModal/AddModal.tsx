@@ -16,6 +16,8 @@ function AddModal({
   setAddModal,
   setCapital,
   setInvestAmounts,
+  investRepartition,
+  capital,
 }: AddModalProps) {
   const [inputState, setInputState] = useState<string>(''); //state keeping track of input value
 
@@ -57,13 +59,18 @@ function AddModal({
             style={styles.addButton}
             onPress={() => {
               setCapital((previous: number) => previous + Number(inputState)); //update capital state
-
-              //update investment amounts, by default add to the DAI asset
               setInvestAmounts((previous: Crypto) => {
-                const value = previous.dai + Number(inputState);
                 return {
                   ...previous,
-                  dai: value,
+                  dai:
+                    (investRepartition.dai / 100) *
+                    (capital + Number(inputState)),
+                  usdc:
+                    (investRepartition.usdc / 100) *
+                    (capital + Number(inputState)),
+                  usdt:
+                    (investRepartition.usdt / 100) *
+                    (capital + Number(inputState)),
                 };
               });
               setInputState(''); // Resetting the input value state
