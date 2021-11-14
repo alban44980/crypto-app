@@ -25,17 +25,13 @@ function Graph({ capital, blendedRate }: GraphProps) {
             },
           ],
         }}
-        width={Dimensions.get('window').width} // from react-native
+        width={Dimensions.get('window').width}
         height={200}
         yAxisLabel="$"
         yAxisSuffix=""
         yAxisInterval={1}
         chartConfig={{
-          // backgroundColor: '#e26a00',
-          // backgroundGradientFrom: colors.main2,
-          // backgroundGradientTo: '#ffa726',
           backgroundGradientTo: 'rgb(109,116,174)',
-          // backgroundGradientTo: colors.main1,
           decimalPlaces: 0,
           color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
@@ -49,11 +45,6 @@ function Graph({ capital, blendedRate }: GraphProps) {
           },
         }}
         bezier
-        style={
-          {
-            // marginVertical: 8,
-          }
-        }
       />
     </View>
   );

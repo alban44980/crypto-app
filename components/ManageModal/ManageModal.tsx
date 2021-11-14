@@ -8,7 +8,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import colors from '../../assets/styles/colors';
-import SliderItem from './SliderItem';
+import SliderContainer from './SliderContainer';
 import { Crypto, ManageModalProps } from '../../Interfaces';
 
 function ManageModal({
@@ -20,7 +20,7 @@ function ManageModal({
   setInvestAmounts,
   capital,
 }: ManageModalProps) {
-  const [update, setUpdate] = useState({ ...investRepartition });
+  const [update, setUpdate] = useState<Crypto>({ ...investRepartition }); //state to store changes before updating the investment Repartition when clicking the confirm button
   return (
     <Modal
       animationType="slide"
@@ -43,21 +43,21 @@ function ManageModal({
           <Text style={styles.titleText}>MY INVESTMENTS</Text>
         </View>
         <View style={styles.dataContainer}>
-          <SliderItem
+          <SliderContainer
             crypto={'dai'}
             rate={rates.dai}
             color={colors.asset1}
             investRate={update.dai}
             setUpdate={setUpdate}
           />
-          <SliderItem
+          <SliderContainer
             crypto={'usdc'}
             rate={rates.usdc}
             color={colors.asset2}
             investRate={update.usdc}
             setUpdate={setUpdate}
           />
-          <SliderItem
+          <SliderContainer
             crypto={'usdt'}
             rate={rates.usdt}
             color={colors.asset3}

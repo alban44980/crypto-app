@@ -58,3 +58,12 @@ export interface GraphProps {
   capital: number;
   blendedRate: number;
 }
+
+export interface SliderItemProp {
+  crypto: string;
+  color: string;
+  investRate: number;
+  setUpdate: React.Dispatch<React.SetStateAction<Crypto>>;
+  sliderValue: number;
+  setSliderValue: React.Dispatch<React.SetStateAction<number>>;
+}
