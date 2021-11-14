@@ -7,12 +7,12 @@ import {
   Text,
   TextInput,
   SafeAreaView,
+  Alert,
 } from 'react-native';
 import colors from '../../assets/styles/colors';
 import { AddModalProps, Crypto } from '../../Interfaces';
 
 function AddModal({
-  addModal,
   setAddModal,
   setCapital,
   setInvestAmounts,
@@ -21,13 +21,14 @@ function AddModal({
 }: AddModalProps) {
   const [inputState, setInputState] = useState<string>(''); //state keeping track of input value
 
+  //alert showing up when user validates while input is still empty
+  const errorAlert = () =>
+    Alert.alert('OOPS 🙃', `It seems you haven't added any funds !`, [
+      { text: 'OK' },
+    ]);
+
   return (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={addModal}
-      onRequestClose={() => {}}
-    >
+    <Modal animationType="slide">
       <SafeAreaView style={styles.container}>
         <View style={styles.backContainer}>
           <TouchableOpacity
@@ -58,23 +59,28 @@ function AddModal({
           <TouchableOpacity
             style={styles.addButton}
             onPress={() => {
-              setCapital((previous: number) => previous + Number(inputState)); //update capital state
-              setInvestAmounts((previous: Crypto) => {
-                return {
-                  ...previous,
-                  dai:
-                    (investRepartition.dai / 100) *
-                    (capital + Number(inputState)),
-                  usdc:
-                    (investRepartition.usdc / 100) *
-                    (capital + Number(inputState)),
-                  usdt:
-                    (investRepartition.usdt / 100) *
-                    (capital + Number(inputState)),
-                };
-              });
-              setInputState(''); // Resetting the input value state
-              setAddModal(false); //Hide the add modal
+              if (!inputState.length) {
+                errorAlert(); //show the alert
+              } else {
+                setCapital((previous: number) => previous + Number(inputState)); //update capital state
+                //update invest amounts
+                setInvestAmounts((previous: Crypto) => {
+                  return {
+                    ...previous,
+                    dai:
+                      (investRepartition.dai / 100) *
+                      (capital + Number(inputState)),
+                    usdc:
+                      (investRepartition.usdc / 100) *
+                      (capital + Number(inputState)),
+                    usdt:
+                      (investRepartition.usdt / 100) *
+                      (capital + Number(inputState)),
+                  };
+                });
+                setInputState(''); // Resetting the input value state to empty string
+                setAddModal(false); //Hide the add modal
+              }
             }}
           >
             <Text style={styles.addText}>Add</Text>

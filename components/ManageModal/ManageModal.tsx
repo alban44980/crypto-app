@@ -12,7 +12,6 @@ import SliderContainer from './SliderContainer';
 import { Crypto, ManageModalProps } from '../../Interfaces';
 
 function ManageModal({
-  manageModal,
   setManageModal,
   rates,
   investRepartition,
@@ -22,12 +21,7 @@ function ManageModal({
 }: ManageModalProps) {
   const [update, setUpdate] = useState<Crypto>({ ...investRepartition }); //state to store changes before updating the investment Repartition when clicking the confirm button
   return (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={manageModal}
-      onRequestClose={() => {}}
-    >
+    <Modal animationType="slide">
       <SafeAreaView style={styles.container}>
         <View style={styles.backContainer}>
           <TouchableOpacity

@@ -39,7 +39,7 @@ function MainTop({
         <TouchableOpacity
           style={styles.addButton}
           onPress={() => {
-            setAddModal(true); //When clicking on Add Funds reveal the modal
+            setAddModal(true); //When clicking on Add Funds reveal the AddModal
           }}
         >
           <Text style={styles.addText}>+ Add Funds</Text>

@@ -39,7 +39,7 @@ function SliderContainer({
         </Text>
       </View>
       <View style={styles.itemBottom}>
-        <View style={styles.sliderContainer}>
+        <View>
           <View style={styles.allocTitleContainer}>
             <Text style={{ color: color, marginRight: 'auto', paddingLeft: 8 }}>
               Allocation
@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
   itemBottom: {
     height: '50%',
   },
-  sliderContainer: {},
   allocTitleContainer: {
     flexDirection: 'row',
     justifyContent: 'center',

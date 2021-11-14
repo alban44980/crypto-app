@@ -4,6 +4,7 @@ import MainTop from './components/MainTop/MainTop';
 import MainBottom from './components/MainBottom/MainBottom';
 import AddModal from './components/AddModal/AddModal';
 import ManageModal from './components/ManageModal/ManageModal';
+import colors from './assets/styles/colors';
 import { Crypto } from './Interfaces';
 
 export default function App() {
@@ -20,7 +21,7 @@ export default function App() {
 
   //allocation per asset in percentage
   const [investRepartition, setInvestRepartition] = useState<Crypto>({
-    dai: 100,
+    dai: 100, //100% on DAI by default
     usdc: 0,
     usdt: 0,
   });
@@ -64,7 +65,6 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       {addModal && (
         <AddModal
-          addModal={addModal}
           setAddModal={setAddModal}
           capital={capital}
           setCapital={setCapital}
@@ -75,7 +75,6 @@ export default function App() {
       {manageModal && (
         <ManageModal
           capital={capital}
-          manageModal={manageModal}
           setManageModal={setManageModal}
           rates={rates}
           investRepartition={investRepartition}
@@ -104,7 +103,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.main1,
     alignItems: 'center',
     justifyContent: 'center',
   },

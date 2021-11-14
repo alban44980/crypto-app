@@ -28,21 +28,21 @@ function SliderItem({
         }}
         onSlidingComplete={(value: any) => {
           const diff = investRate - value[0]; //difference between previous value and new value
-          const adjust = Math.abs(diff / 2);
+          const adjust = Math.abs(diff / 2); //adjust is the amount that needs to be adjusted for the other 2 assets
           setUpdate((previous) => {
             const newState: any = { ...previous };
             let edgeCase = false; //edgeCase represents the scenario when one of the asset would go under 0%
             for (let key in newState) {
-              //if asset is the one we've used the slider for, update other assets rate
+              //update other assets than the one we've used the slider for
               if (key !== crypto) {
                 //if diff is a positive value, incrase other assets
                 if (diff > 0) {
-                  newState[key] = newState[key] + adjust;
+                  newState[key] += adjust;
                   //if diff is a negative value, decrease other assets
                 } else if (diff < 0) {
                   if (newState[key] >= adjust) {
-                    newState[key] = newState[key] - adjust;
-                    //if decreasing would make it under 0, set it to 0
+                    newState[key] -= adjust;
+                    //if decreasing would make it under 0, set that asset to 0
                   } else if (newState[key] < adjust) {
                     edgeCase = true;
                     newState[key] = 0;
