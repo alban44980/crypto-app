@@ -50,6 +50,8 @@ export interface ManageItemsProps {
   rate: number;
   investRate: number;
   setUpdate: React.Dispatch<React.SetStateAction<Crypto>>;
+  updateItem: number;
+  update: Crypto;
 }
 
 export interface GraphProps {

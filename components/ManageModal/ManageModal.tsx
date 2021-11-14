@@ -8,7 +8,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import colors from '../../assets/styles/colors';
-import DataItem from './DataItem';
+import SliderItem from './SliderItem';
 import { Crypto, ManageModalProps } from '../../Interfaces';
 
 function ManageModal({
@@ -43,26 +43,32 @@ function ManageModal({
           <Text style={styles.titleText}>MY INVESTMENTS</Text>
         </View>
         <View style={styles.dataContainer}>
-          <DataItem
-            crypto={'DAI'}
+          <SliderItem
+            crypto={'dai'}
             rate={rates.dai}
             color={colors.asset1}
             investRate={update.dai}
             setUpdate={setUpdate}
+            update={update}
+            updateItem={update.dai}
           />
-          <DataItem
-            crypto={'USDC'}
+          <SliderItem
+            crypto={'usdc'}
             rate={rates.usdc}
             color={colors.asset2}
             investRate={update.usdc}
             setUpdate={setUpdate}
+            update={update}
+            updateItem={update.usdc}
           />
-          <DataItem
-            crypto={'USDT'}
+          <SliderItem
+            crypto={'usdt'}
             rate={rates.usdt}
             color={colors.asset3}
             investRate={update.usdt}
             setUpdate={setUpdate}
+            update={update}
+            updateItem={update.usdt}
           />
         </View>
         <View style={styles.confirmContainer}>

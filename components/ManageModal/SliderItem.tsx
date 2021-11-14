@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Slider } from '@miblanchard/react-native-slider';
 import colors from '../../assets/styles/colors';
 import { Crypto, ManageItemsProps } from '../../Interfaces';
 
-function DataItem({
+function SliderItem({
   crypto,
   color,
   rate,
   investRate,
   setUpdate,
+  updateItem,
+  update,
 }: ManageItemsProps) {
+  // const [sliderValue, setSliderValue] = useState(investRate);
   return (
     <View style={styles.dataItem}>
       <View style={styles.itemTop}>
@@ -22,7 +25,7 @@ function DataItem({
             color: color,
           }}
         >
-          {crypto}
+          {crypto.toUpperCase()}
         </Text>
         <Text
           style={{
@@ -51,24 +54,34 @@ function DataItem({
               thumbTintColor={color}
               trackStyle={{ height: 7 }}
               step={5}
-              onValueChange={(value: any) => {
-                setUpdate((previous: Crypto) => {
-                  const asset = crypto.toLowerCase();
-                  return {
-                    ...previous,
-                    [asset]: value[0],
-                  };
-                });
-              }}
+              onValueChange={(value: any) => {}}
               onSlidingComplete={(value: any) => {
-                const total = 100;
-                const diff = total - value;
-                const asset = crypto.toLowerCase();
+                const diff = investRate - value[0];
+                const adjust = Math.abs(diff / 2);
                 setUpdate((previous: Crypto) => {
                   const newState: any = { ...previous };
+                  let minusCase = false;
                   for (let key in newState) {
-                    if (key !== asset) {
-                      newState[key] = diff / 2;
+                    if (key !== crypto) {
+                      if (diff > 0) {
+                        newState[key] = newState[key] + adjust;
+                      } else if (diff < 0) {
+                        if (newState[key] >= adjust) {
+                          newState[key] = newState[key] - adjust;
+                        } else if (newState[key] < adjust) {
+                          minusCase = true;
+                          newState[key] = 0;
+                        }
+                      }
+                    } else if (key === crypto) {
+                      newState[key] = value[0];
+                    }
+                  }
+                  if (minusCase) {
+                    for (let key in newState) {
+                      if (key !== crypto && newState[key] !== 0) {
+                        newState[key] = 100 - value[0];
+                      }
                     }
                   }
                   return newState;
@@ -103,4 +116,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DataItem;
+export default SliderItem;
