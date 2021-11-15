@@ -33,10 +33,15 @@ function MainTop({
     <View style={styles.top}>
       <View style={styles.addContainer}>
         <Image
+          accessible={true}
+          accessibilityLabel="Profile picture"
           style={styles.profilePic}
           source={require('../../assets/profile_pic.jpeg')}
         />
         <TouchableOpacity
+          accessible={true}
+          accessibilityLabel="Tap me!"
+          accessibilityHint="Add new funds"
           style={styles.addButton}
           onPress={() => {
             setAddModal(true); //When clicking on Add Funds reveal the AddModal
@@ -45,13 +50,13 @@ function MainTop({
           <Text style={styles.addText}>+ Add Funds</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.mainNumbers}>
+      <View style={styles.mainNumbers} accessible={true}>
         <Text style={styles.capital}>${capital}</Text>
         <Text style={styles.interest}>
           {isNaN(blendedRate) ? (
             <Text>Add Funds !</Text>
           ) : (
-            <Text>{blendedRate.toFixed(4)}%</Text>
+            <Text>+{blendedRate.toFixed(3)}%</Text>
           )}
         </Text>
         <Text style={styles.prediction}>
@@ -59,7 +64,10 @@ function MainTop({
           {isNaN(capital * blendedRate) ? (
             <Text> $0</Text>
           ) : (
-            <Text> ${(capital * blendedRate).toFixed(2)}</Text>
+            <Text style={{ fontWeight: 'bold', fontSize: 16 }}>
+              {' '}
+              ${(capital * blendedRate).toFixed(2)}
+            </Text>
           )}
         </Text>
       </View>
@@ -73,7 +81,7 @@ const styles = StyleSheet.create({
     height: '53%',
     width: '100%',
     backgroundColor: colors.main1,
-    paddingTop: Platform.OS === 'android' ? 27 : 0, //workaround as SafeAreaView works only on IOS
+    paddingTop: Platform.OS === 'android' ? 38 : 0, //workaround as SafeAreaView works only on IOS
   },
   addContainer: {
     width: '100%',
@@ -90,11 +98,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   capital: {
-    fontSize: 22,
-  },
-  interest: {
     fontSize: 30,
     fontWeight: 'bold',
+  },
+  interest: {
+    fontSize: 19,
+    fontWeight: 'bold',
+    margin: 5,
   },
   prediction: {
     fontSize: 15,

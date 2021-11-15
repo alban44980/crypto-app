@@ -17,7 +17,7 @@ function SliderContainer({
   }, [investRate]);
 
   return (
-    <View style={styles.dataItem}>
+    <View accessible={true} style={styles.dataItem}>
       <View style={styles.itemTop}>
         <Text
           style={{

@@ -21,10 +21,18 @@ function ManageModal({
 }: ManageModalProps) {
   const [update, setUpdate] = useState<Crypto>({ ...investRepartition }); //state to store changes before updating the investment Repartition when clicking the confirm button
   return (
-    <Modal animationType="slide">
+    <Modal
+      animationType="slide"
+      onRequestClose={() => {
+        setManageModal(false);
+      }}
+    >
       <SafeAreaView style={styles.container}>
         <View style={styles.backContainer}>
           <TouchableOpacity
+            accessible={true}
+            accessibilityLabel="Go Back"
+            accessibilityHint="Navigates to the previous screen"
             style={styles.backButton}
             onPress={() => {
               setManageModal(false); //when pressing the back button hide the modal
@@ -33,7 +41,7 @@ function ManageModal({
             <Text style={styles.backText}>BACK</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.titleContainer}>
+        <View accessible={true} style={styles.titleContainer}>
           <Text style={styles.titleText}>MY INVESTMENTS</Text>
         </View>
         <View style={styles.dataContainer}>
@@ -61,6 +69,9 @@ function ManageModal({
         </View>
         <View style={styles.confirmContainer}>
           <TouchableOpacity
+            accessible={true}
+            accessibilityLabel="Tap me!"
+            accessibilityHint="Confirm assets allocations and go back to home page"
             style={styles.confirmButton}
             onPress={() => {
               setInvestRepartition(update); //Update investments allocation in %

@@ -6,7 +6,11 @@ import { GraphProps } from '../../Interfaces';
 
 function Graph({ capital, blendedRate }: GraphProps) {
   return (
-    <View style={styles.graphContainer}>
+    <View
+      accessible={true}
+      accessibilityLabel="Graph: prediction benefits over years"
+      style={styles.graphContainer}
+    >
       <LineChart
         data={{
           labels: ['Now', '2023', '2026', '2031', '2041', '2051'],
@@ -25,7 +29,7 @@ function Graph({ capital, blendedRate }: GraphProps) {
             },
           ],
         }}
-        width={Dimensions.get('window').width}
+        width={Dimensions.get('window').width + 1}
         height={200}
         yAxisLabel="$"
         yAxisSuffix=""

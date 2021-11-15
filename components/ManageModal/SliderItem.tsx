@@ -13,7 +13,7 @@ function SliderItem({
   setSliderValue,
 }: SliderItemProp) {
   return (
-    <View style={{ margin: 5 }}>
+    <View accessibilityLabel="Slider to reallocate funds" style={{ margin: 5 }}>
       <Slider
         value={sliderValue}
         minimumTrackTintColor={color}

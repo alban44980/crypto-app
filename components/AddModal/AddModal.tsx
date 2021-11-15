@@ -28,10 +28,18 @@ function AddModal({
     ]);
 
   return (
-    <Modal animationType="slide">
+    <Modal
+      animationType="slide"
+      onRequestClose={() => {
+        setAddModal(false);
+      }}
+    >
       <SafeAreaView style={styles.container}>
         <View style={styles.backContainer}>
           <TouchableOpacity
+            accessible={true}
+            accessibilityLabel="Go Back"
+            accessibilityHint="Click to go back to the home page"
             style={styles.backButton}
             onPress={() => {
               setAddModal(false); //When clicking on back button hide the Add Modal
@@ -48,6 +56,7 @@ function AddModal({
             <TextInput
               style={styles.inputText}
               placeholder="100.00"
+              accessible={true}
               value={inputState}
               onChangeText={(text) => {
                 setInputState(text); //updating the input state on change
@@ -57,6 +66,9 @@ function AddModal({
         </View>
         <View style={styles.addContainer}>
           <TouchableOpacity
+            accessible={true}
+            accessibilityLabel="Tap me!"
+            accessibilityHint="Add the new funds and go back to home page"
             style={styles.addButton}
             onPress={() => {
               if (!inputState.length) {
@@ -78,7 +90,7 @@ function AddModal({
                       (capital + Number(inputState)),
                   };
                 });
-                setInputState(''); // Resetting the input value state to empty string
+                setInputState(''); // Reset the input value state to empty string
                 setAddModal(false); //Hide the add modal
               }
             }}
@@ -106,7 +118,7 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginTop: 5,
     marginRight: 5,
-    height: '15%',
+    height: 40,
     width: '30%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -150,7 +162,7 @@ const styles = StyleSheet.create({
   },
   addButton: {
     backgroundColor: colors.main1,
-    height: '100%',
+    height: 60,
     width: '50%',
     alignItems: 'center',
     justifyContent: 'center',

@@ -10,7 +10,7 @@ function DataItem({ name, rate, investment, color }: BottomItemProps) {
           <Text
             style={{
               fontWeight: 'bold',
-              fontSize: 18,
+              fontSize: 19,
               color: color,
             }}
           >
@@ -26,7 +26,7 @@ function DataItem({ name, rate, investment, color }: BottomItemProps) {
               fontWeight: 'bold',
             }}
           >
-            {rate.toFixed(4)}%
+            +{rate.toFixed(3)}%
           </Text>
         </View>
       </View>
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   amountNum: {
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 19,
   },
   amountText: { paddingLeft: 8 },
 });

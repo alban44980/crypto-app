@@ -7,10 +7,10 @@ import { MainBottomProps } from '../../Interfaces';
 function MainBottom({ setManageModal, rates, investAmounts }: MainBottomProps) {
   return (
     <View style={styles.bottom}>
-      <View style={styles.titleContainer}>
+      <View accessible={true} style={styles.titleContainer}>
         <Text style={styles.investTitle}>My investments</Text>
       </View>
-      <View style={styles.dataContainer}>
+      <View accessible={true} style={styles.dataContainer}>
         <DataItem
           name={'DAI'}
           rate={rates.dai}
@@ -32,6 +32,9 @@ function MainBottom({ setManageModal, rates, investAmounts }: MainBottomProps) {
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
+          accessible={true}
+          accessibilityLabel="Tap me!"
+          accessibilityHint="Manage your investments"
           style={styles.manageButton}
           onPress={() => {
             setManageModal(true); //When clicking on Manage, reveal the modal

@@ -58,7 +58,8 @@ export default function App() {
           }
         }
         setRates(obj); //updating our rates state with values from the API
-      });
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   return (
